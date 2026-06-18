@@ -1,0 +1,9 @@
+User-agent: *
+Allow: /
+Disallow: /admin
+Disallow: /api
+Disallow: /*.json$
+Disallow: /.env
+Disallow: /.git
+
+Sitemap: https://expertgem.com/sitemap.xml

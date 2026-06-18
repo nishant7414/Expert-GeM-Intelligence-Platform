@@ -1,0 +1,17 @@
+{
+  "name": "Expert GeM Intelligence Platform",
+  "short_name": "Expert GeM",
+  "description": "Win more government contracts with confidence",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#0F172A",
+  "scope": "/",
+  "icons": [
+    {
+      "src": "/favicon.ico",
+      "sizes": "32x32",
+      "type": "image/x-icon"
+    }
+  ]
+}
