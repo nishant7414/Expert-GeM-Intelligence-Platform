@@ -17,7 +17,7 @@ export function Footer() {
               Expert GeM
             </h3>
             <p className="text-sm text-foreground/70 mb-4">
-              India's most advanced government procurement partner.
+              India&apos;s most advanced government procurement partner.
             </p>
             <div className="space-y-2 text-sm">
               <div className="flex items-center gap-2">

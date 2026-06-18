@@ -224,7 +224,7 @@ export function ConsultationForm() {
             <h3 className="font-bold mb-4">What happens after I submit this form?</h3>
             <ul className="space-y-2 text-sm text-foreground/70">
               <li>✓ Our team will review your submission within 2 hours</li>
-              <li>✓ You'll receive a personalized consultation link via email</li>
+              <li>✓ You&apos;ll receive a personalized consultation link via email</li>
               <li>✓ Schedule a 30-minute free consultation call</li>
               <li>✓ Receive a customized action plan for your business</li>
             </ul>

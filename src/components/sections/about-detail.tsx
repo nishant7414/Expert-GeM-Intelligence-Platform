@@ -70,7 +70,7 @@ export function AboutDetail() {
           >
             <h3 className="text-2xl font-bold text-accent mb-4">Our Vision</h3>
             <p className="text-foreground/80">
-              To become India's most trusted and advanced government procurement partner, enabling businesses of all sizes to compete confidently for lucrative government contracts.
+              To become India&apos;s most trusted and advanced government procurement partner, enabling businesses of all sizes to compete confidently for lucrative government contracts.
             </p>
           </motion.div>
         </div>

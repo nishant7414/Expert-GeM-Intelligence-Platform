@@ -37,7 +37,7 @@ export function ContactDetail() {
             <div>
               <h2 className="text-3xl font-bold mb-4">Get in Touch</h2>
               <p className="text-foreground/70">
-                Have questions about our platform or services? We're here to help. Reach out to us through any of these channels.
+                Have questions about our platform or services? We&apos;re here to help. Reach out to us through any of these channels.
               </p>
             </div>
 
@@ -191,7 +191,7 @@ export function ContactDetail() {
               </button>
 
               <p className="text-xs text-foreground/60 text-center">
-                We'll get back to you within 24 hours.
+                We&apos;ll get back to you within 24 hours.
               </p>
             </form>
           </motion.div>
