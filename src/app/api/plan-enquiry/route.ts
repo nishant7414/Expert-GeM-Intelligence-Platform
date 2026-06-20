@@ -22,7 +22,6 @@ export async function POST(req: Request) {
     }
 
     const resend = new Resend(process.env.RESEND_API_KEY)
-    const receiverEmail = process.env.CONTACT_RECEIVER_EMAIL
 
     const body = await req.json()
     const validatedData = formSchema.parse(body)
