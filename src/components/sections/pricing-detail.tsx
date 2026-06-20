@@ -4,10 +4,13 @@ import { motion } from 'framer-motion'
 import { Check, Clock, Package, Briefcase } from 'lucide-react'
 import { useState } from 'react'
 import { ServiceBookingModal } from '../ui/service-booking-modal'
+import { PlanEnquiryModal } from '../ui/plan-enquiry-modal'
 
 export function PricingDetail() {
   const [isBookingModalOpen, setIsBookingModalOpen] = useState(false)
   const [selectedService, setSelectedService] = useState('')
+  const [isPlanModalOpen, setIsPlanModalOpen] = useState(false)
+  const [selectedPlan, setSelectedPlan] = useState('')
   const services = [
     {
       name: 'GeM Registration',
@@ -356,6 +359,14 @@ export function PricingDetail() {
                 </ul>
 
                 <button
+                  onClick={() => {
+                    if (plan.monthlyPrice !== null) {
+                      setSelectedPlan(plan.name)
+                      setIsPlanModalOpen(true)
+                    } else {
+                      window.open('https://wa.me/+919473727212?text=Hello%20Expert%20GeM%20Consultancy,%20I%20would%20like%20to%20know%20more%20about%20your%20services.%20Please%20contact%20me.', '_blank')
+                    }
+                  }}
                   className={`w-full py-3 px-4 rounded-xl text-sm font-bold transition-all mt-auto ${
                     plan.highlighted
                       ? 'bg-primary text-white hover:bg-blue-700 shadow-sm'
@@ -374,6 +385,12 @@ export function PricingDetail() {
         isOpen={isBookingModalOpen} 
         onClose={() => setIsBookingModalOpen(false)} 
         selectedService={selectedService} 
+      />
+
+      <PlanEnquiryModal 
+        isOpen={isPlanModalOpen} 
+        onClose={() => setIsPlanModalOpen(false)} 
+        selectedPlan={selectedPlan} 
       />
     </div>
   )

@@ -18,3 +18,7 @@ dist/
 .vscode/
 *.iml
 .prettierignore
+
+list-models.js
+test-chat.js
+update_forms.py
