@@ -52,6 +52,21 @@ export function PricingPreview() {
     },
   ]
 
+  const handleWhatsAppClick = (planName: string) => {
+    let message = '';
+    if (planName === 'Starter') {
+      message = 'Hello Expert GeM Consultancy,\n\nI am interested in the Starter Plan (₹5,999/month).\n\nPlease share complete details, onboarding process, and next steps.';
+    } else if (planName === 'Growth') {
+      message = 'Hello Expert GeM Consultancy,\n\nI am interested in the Growth Plan (₹15,999/month).\n\nPlease share complete details, onboarding process, and next steps.';
+    } else if (planName === 'Enterprise') {
+      message = 'Hello Expert GeM Consultancy,\n\nI am interested in the Enterprise Plan.\n\nPlease contact me regarding pricing, custom solutions, and implementation options.';
+    }
+    
+    if (message) {
+      window.open(`https://wa.me/+919473727212?text=${encodeURIComponent(message)}`, '_blank');
+    }
+  };
+
   return (
     <section className="py-20 sm:py-32 bg-[#F6F8FC]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -114,6 +129,7 @@ export function PricingPreview() {
               </div>
 
               <button
+                onClick={() => handleWhatsAppClick(plan.name)}
                 className={`w-full py-3 px-4 rounded-xl font-bold transition-all mt-auto border flex items-center justify-center ${
                   plan.featured
                     ? 'btn-primary'
