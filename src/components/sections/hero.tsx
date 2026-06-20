@@ -2,167 +2,169 @@
 
 import Link from 'next/link'
 import { motion } from 'framer-motion'
-import { ArrowRight, TrendingUp, Shield, Zap } from 'lucide-react'
+import { TrendingUp, ShieldCheck, CheckCircle2, Zap } from 'lucide-react'
 
 export function Hero() {
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
-      transition: { staggerChildren: 0.2, delayChildren: 0.1 },
+      transition: { staggerChildren: 0.15, delayChildren: 0.1 },
     },
   }
 
   const itemVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.8 } },
+    hidden: { opacity: 0, y: 15 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } },
   }
 
   return (
-    <section className="relative min-h-screen pt-20 pb-12 sm:pt-32 sm:pb-20 overflow-hidden">
-      {/* Gradient Background */}
-      <div className="absolute inset-0 -z-10">
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-96 h-96 bg-secondary/20 rounded-full blur-3xl"></div>
-        <div className="absolute bottom-0 right-0 w-96 h-96 bg-accent/20 rounded-full blur-3xl"></div>
+    <section className="relative min-h-screen pt-24 pb-16 sm:pt-32 sm:pb-24 overflow-hidden bg-background">
+      {/* Subtle background decoration */}
+      <div className="absolute inset-0 bg-gradient-to-br from-[#EEF4FF] via-[#F5F3FF] to-[#F8FAFC] -z-10"></div>
+      <div className="absolute inset-0 -z-10 pointer-events-none overflow-hidden">
+        <div className="absolute top-[-10%] right-[-5%] w-[800px] h-[800px] rounded-full bg-blue-500/5 blur-[120px]"></div>
+        <div className="absolute bottom-[-10%] left-[-10%] w-[600px] h-[600px] rounded-full bg-blue-50 blur-[120px]"></div>
       </div>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
         <motion.div
           variants={containerVariants}
           initial="hidden"
           animate="visible"
-          className="grid md:grid-cols-2 gap-8 lg:gap-12 items-center"
+          className="grid lg:grid-cols-2 gap-12 lg:gap-8 items-center"
         >
           {/* Left Content */}
-          <div className="space-y-6">
-            <motion.div variants={itemVariants} className="space-y-2">
-              <div className="inline-block px-4 py-2 rounded-full bg-secondary/10 border border-secondary/30 mb-4">
-                <span className="text-sm font-medium text-secondary flex items-center gap-2">
-                  <span className="w-2 h-2 bg-secondary rounded-full"></span>
-                  Government Procurement Intelligence
-                </span>
+          <div className="space-y-8 max-w-2xl lg:max-w-none mx-auto text-center lg:text-left pt-10">
+            <motion.div variants={itemVariants} className="space-y-4">
+              <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white border border-slate-200 shadow-sm">
+                <span className="flex h-2 w-2 rounded-full bg-primary"></span>
+                <span className="text-sm font-semibold text-slate-600">Government Procurement Intelligence</span>
               </div>
 
-              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight">
-                Win More{' '}
-                <span className="bg-gradient-to-r from-secondary to-accent bg-clip-text text-transparent">
-                  Government Contracts
-                </span>{' '}
+              <h1 className="text-5xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight text-slate-900 leading-[1.1]">
+                Win More <br />
+                <span className="text-primary">Government</span> <br />
+                <span className="text-primary">Contracts</span> <br />
                 with Confidence
               </h1>
             </motion.div>
 
-            <motion.p
-              variants={itemVariants}
-              className="text-lg text-foreground/70 max-w-xl"
-            >
-              Expert GeM Intelligence Platform helps businesses discover opportunities, analyze tenders, manage compliance, participate strategically, and improve procurement success through expert guidance and intelligent technology.
-            </motion.p>
+            <motion.div variants={itemVariants} className="space-y-6">
+              <p className="text-lg sm:text-xl text-slate-600 leading-relaxed">
+                Expert GeM Intelligence Platform helps businesses discover opportunities, analyze tenders, manage compliance, participate strategically, and improve procurement success through expert guidance and intelligent technology.
+              </p>
 
-            {/* Features */}
-            <motion.div variants={itemVariants} className="space-y-3 pt-2">
-              <div className="flex items-start gap-3">
-                <TrendingUp className="w-5 h-5 text-secondary mt-1 flex-shrink-0" />
-                <span className="text-foreground/80">1000+ businesses assisted in winning contracts</span>
-              </div>
-              <div className="flex items-start gap-3">
-                <Shield className="w-5 h-5 text-secondary mt-1 flex-shrink-0" />
-                <span className="text-foreground/80">95% client satisfaction rate</span>
-              </div>
-              <div className="flex items-start gap-3">
-                <Zap className="w-5 h-5 text-secondary mt-1 flex-shrink-0" />
-                <span className="text-foreground/80">AI-powered tender analysis & insights</span>
+              {/* Benefits List */}
+              <div className="space-y-4 text-left max-w-md mx-auto lg:mx-0">
+                <div className="flex items-start gap-3">
+                  <div className="mt-0.5 w-5 h-5 flex items-center justify-center">
+                    <TrendingUp className="w-5 h-5 text-primary" />
+                  </div>
+                  <span className="text-slate-700 font-medium">1000+ businesses assisted in winning contracts</span>
+                </div>
+                <div className="flex items-start gap-3">
+                  <div className="mt-0.5 w-5 h-5 flex items-center justify-center">
+                    <ShieldCheck className="w-5 h-5 text-primary" />
+                  </div>
+                  <span className="text-slate-700 font-medium">95% client satisfaction rate</span>
+                </div>
+                <div className="flex items-start gap-3">
+                  <div className="mt-0.5 w-5 h-5 flex items-center justify-center">
+                    <Zap className="w-5 h-5 text-primary" />
+                  </div>
+                  <span className="text-slate-700 font-medium">AI-powered tender analysis & insights</span>
+                </div>
               </div>
             </motion.div>
 
             {/* CTA Buttons */}
-            <motion.div variants={itemVariants} className="flex flex-col sm:flex-row gap-3 pt-4">
+            <motion.div variants={itemVariants} className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start pt-2">
               <Link
                 href="/book-consultation"
-                className="px-8 py-3 bg-secondary hover:bg-secondary/90 text-primary font-semibold rounded-lg transition-colors flex items-center justify-center gap-2 group"
+                className="btn-primary"
               >
                 Book Free Consultation
-                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
               </Link>
               <Link
                 href="/contact"
-                className="px-8 py-3 border-2 border-secondary text-secondary hover:bg-secondary/10 font-semibold rounded-lg transition-colors"
+                className="btn-secondary"
               >
                 Get Free Assessment
               </Link>
             </motion.div>
           </div>
 
-          {/* Right - Dashboard Mockup */}
+          {/* Right - Premium White Cards Layout */}
           <motion.div
             variants={itemVariants}
-            className="relative h-96 sm:h-[500px] hidden md:block"
+            className="relative h-[500px] sm:h-[600px] hidden lg:block"
           >
-            {/* Dashboard Cards */}
-            <div className="absolute inset-0 space-y-4">
-              {/* Card 1 - Active Opportunities */}
-              <motion.div
-                animate={{ y: [-20, 20, -20] }}
-                transition={{ duration: 6, repeat: Infinity }}
-                className="absolute top-0 left-0 w-48 sm:w-64 bg-card/80 glass-morphism-dark p-4 rounded-lg border border-secondary/20 shadow-xl"
-              >
-                <div className="text-xs text-foreground/60 mb-2">Active Opportunities</div>
-                <div className="text-2xl sm:text-3xl font-bold text-secondary mb-1">2,847</div>
-                <div className="text-xs text-green-400">+14% this month</div>
-                <div className="mt-3 h-2 bg-border rounded-full overflow-hidden">
-                  <div className="h-full w-4/5 bg-gradient-to-r from-secondary to-accent rounded-full"></div>
-                </div>
-              </motion.div>
+            {/* Active Opportunities Card */}
+            <motion.div 
+              animate={{ y: [-8, 8, -8] }}
+              transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+              className="absolute top-0 left-0 w-72 enterprise-card p-6 z-10"
+            >
+              <div className="text-sm font-semibold text-slate-500 mb-1">Active Opportunities</div>
+              <div className="text-4xl font-extrabold text-primary mb-2">2,847</div>
+              <div className="text-xs font-semibold text-primary mb-4">+14% this month</div>
+              {/* Progress Bar */}
+              <div className="h-2 w-full bg-slate-100 rounded-full overflow-hidden">
+                <div className="h-full bg-primary w-[65%] rounded-full"></div>
+              </div>
+            </motion.div>
 
-              {/* Card 2 - Tender Match Score */}
-              <motion.div
-                animate={{ y: [20, -20, 20] }}
-                transition={{ duration: 6, repeat: Infinity, delay: 0.5 }}
-                className="absolute top-32 right-0 w-48 sm:w-64 bg-card/80 glass-morphism-dark p-4 rounded-lg border border-accent/20 shadow-xl"
-              >
-                <div className="text-xs text-foreground/60 mb-2">Tender Match Score</div>
-                <div className="text-2xl sm:text-3xl font-bold text-accent mb-1">94%</div>
-                <div className="text-xs text-foreground/70">Excellent Match</div>
-                <div className="mt-3 flex gap-1">
-                  {[...Array(5)].map((_, i) => (
-                    <div
-                      key={i}
-                      className="flex-1 h-1 bg-accent/30 rounded-full"
-                      style={{ width: `${(i + 1) * 20}%` }}
-                    ></div>
-                  ))}
-                </div>
-              </motion.div>
+            {/* Tender Match Score Card */}
+            <motion.div 
+              animate={{ y: [-12, 12, -12] }}
+              transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
+              className="absolute top-[80px] right-0 w-72 enterprise-card p-6 z-20"
+            >
+              <div className="text-sm font-semibold text-slate-500 mb-1">Tender Match Score</div>
+              <div className="text-4xl font-extrabold text-slate-900 mb-2">94%</div>
+              <div className="text-xs font-semibold text-slate-500 mb-4">Excellent Match</div>
+              {/* Score Indicator (Segmented Bar) */}
+              <div className="flex gap-1.5 h-2 w-full">
+                <div className="h-full bg-amber-500 rounded-full flex-1"></div>
+                <div className="h-full bg-amber-500 rounded-full flex-1"></div>
+                <div className="h-full bg-amber-500 rounded-full flex-1"></div>
+                <div className="h-full bg-amber-500 rounded-full flex-1"></div>
+                <div className="h-full bg-slate-100 rounded-full flex-1"></div>
+              </div>
+            </motion.div>
 
-              {/* Card 3 - Compliance Status */}
-              <motion.div
-                animate={{ y: [-10, 10, -10] }}
-                transition={{ duration: 5, repeat: Infinity, delay: 1 }}
-                className="absolute bottom-0 left-1/4 w-48 sm:w-64 bg-card/80 glass-morphism-dark p-4 rounded-lg border border-secondary/20 shadow-xl"
-              >
-                <div className="text-xs text-foreground/60 mb-2">Compliance Status</div>
-                <div className="flex items-center justify-between">
-                  <div>
-                    <div className="text-2xl sm:text-3xl font-bold text-secondary">100%</div>
-                    <div className="text-xs text-green-400">All Documents Ready</div>
-                  </div>
-                  <div className="w-12 h-12 bg-secondary/20 rounded-lg flex items-center justify-center">
-                    <span className="text-xl">✓</span>
-                  </div>
-                </div>
-              </motion.div>
+            {/* Bid Success Rate Card */}
+            <motion.div 
+              animate={{ y: [-10, 10, -10] }}
+              transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+              className="absolute top-[240px] left-[80px] w-72 enterprise-card p-6 z-30"
+            >
+              <div className="text-sm font-semibold text-slate-500 mb-1">Bid Success Rate</div>
+              <div className="text-4xl font-extrabold text-slate-900 mb-2">78%</div>
+              <div className="text-xs font-semibold text-slate-500 mb-4">Above Average</div>
+              {/* Performance Indicator */}
+              <div className="h-2 w-full bg-slate-100 rounded-full overflow-hidden">
+                <div className="h-full bg-primary w-[78%] rounded-full"></div>
+              </div>
+            </motion.div>
 
-              {/* Card 4 - Bid Success Rate */}
-              <motion.div
-                animate={{ y: [10, -10, 10] }}
-                transition={{ duration: 5.5, repeat: Infinity, delay: 1.5 }}
-                className="absolute bottom-20 right-1/4 w-48 sm:w-64 bg-card/80 glass-morphism-dark p-4 rounded-lg border border-accent/20 shadow-xl"
-              >
-                <div className="text-xs text-foreground/60 mb-2">Bid Success Rate</div>
-                <div className="text-2xl sm:text-3xl font-bold text-accent mb-1">78%</div>
-                <div className="text-xs text-foreground/70">Above Average</div>
-              </motion.div>
-            </div>
+            {/* Compliance Ready Card */}
+            <motion.div 
+              animate={{ y: [-14, 14, -14] }}
+              transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }}
+              className="absolute top-[380px] right-[120px] w-72 enterprise-card p-6 z-40 flex items-center justify-between"
+            >
+              <div>
+                <div className="text-sm font-semibold text-slate-500 mb-1">Compliance Ready</div>
+                <div className="text-4xl font-extrabold text-primary mb-1">100%</div>
+                <div className="text-xs font-medium text-slate-500">All Documents Ready</div>
+              </div>
+              <div className="w-12 h-12 rounded-xl bg-emerald-50 border border-emerald-100 flex items-center justify-center flex-shrink-0">
+                <CheckCircle2 className="w-6 h-6 text-primary" />
+              </div>
+            </motion.div>
+
           </motion.div>
         </motion.div>
       </div>

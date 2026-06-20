@@ -113,16 +113,16 @@ export function AboutDetail() {
             className="grid md:grid-cols-2 lg:grid-cols-3 gap-6"
           >
             {[
-              { name: 'Rajesh Kumar', role: 'Founder & CEO', bio: '15+ years in government procurement' },
-              { name: 'Priya Sharma', role: 'Chief Technology Officer', bio: 'AI and data platform expert' },
-              { name: 'Amit Patel', role: 'VP, Consulting Services', bio: 'Procurement strategy specialist' },
+              { name: 'Shubham Singh', role: 'Founder & CEO', bio: '15+ years in government procurement' },
+              { name: 'Nishant Kumar', role: 'Chief Technology Officer', bio: 'AI and data platform expert' },
+              { name: 'Piyush Dharia', role: 'VP, Consulting Services', bio: 'Procurement strategy specialist' },
             ].map((leader, index) => (
               <motion.div
                 key={index}
                 whileHover={{ y: -5 }}
                 className="p-6 bg-card border border-border/50 rounded-lg text-center"
               >
-                <div className="w-16 h-16 bg-gradient-to-br from-secondary to-accent rounded-full mx-auto mb-4 flex items-center justify-center text-2xl font-bold text-white">
+                <div className="w-16 h-16 bg-gradient-to-br from-secondary to-accent rounded-full mx-auto mb-4 flex items-center justify-center text-2xl font-bold text-slate-900">
                   {leader.name.charAt(0)}
                 </div>
                 <h3 className="font-bold text-lg mb-1">{leader.name}</h3>

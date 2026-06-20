@@ -24,22 +24,30 @@ export function Industries() {
   }
 
   const itemVariants = {
-    hidden: { opacity: 0, scale: 0.8 },
-    visible: { opacity: 1, scale: 1 },
+    hidden: { opacity: 0, scale: 0.95 },
+    visible: { opacity: 1, scale: 1, transition: { type: "spring", stiffness: 300, damping: 24 } },
   }
 
   return (
-    <section className="py-16 sm:py-24">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section className="py-24 sm:py-32 bg-[#F6F8FC] border-y border-slate-200 overflow-hidden relative">
+      {/* Premium Background Mesh */}
+      <div className="absolute inset-0 bg-[url('/grid.svg')] bg-center opacity-[0.02]"></div>
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-center mb-12"
+          className="text-center mb-20"
         >
-          <h2 className="text-3xl sm:text-4xl font-bold mb-4">Industries We Serve</h2>
-          <p className="text-lg text-foreground/70 max-w-2xl mx-auto">
-            Specialized solutions for every sector of the Indian economy
+          <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white border border-slate-200 shadow-sm mb-6">
+            <span className="text-sm font-bold tracking-wider text-slate-600 uppercase">Sectors</span>
+          </div>
+          <h3 className="text-4xl sm:text-5xl font-extrabold text-slate-900 mb-6 tracking-tight">
+            Industries We Serve
+          </h3>
+          <p className="text-lg text-slate-600 font-medium max-w-2xl mx-auto">
+            Specialized solutions and intelligence for every sector of the Indian economy.
           </p>
         </motion.div>
 
@@ -48,7 +56,7 @@ export function Industries() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
-          className="grid md:grid-cols-2 lg:grid-cols-4 gap-6"
+          className="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6"
         >
           {industries.map((industry, index) => {
             const Icon = industry.icon
@@ -56,13 +64,17 @@ export function Industries() {
               <motion.div
                 key={index}
                 variants={itemVariants}
-                whileHover={{ y: -5 }}
-                className="p-6 bg-card border border-border/50 rounded-lg hover:border-secondary/50 transition-all text-center group cursor-pointer"
+                className={`enterprise-card relative h-48 transition-all duration-300 group cursor-pointer overflow-hidden hover:-translate-y-1`}
               >
-                <div className="w-16 h-16 bg-secondary/10 rounded-lg flex items-center justify-center mx-auto mb-4 group-hover:bg-secondary/20 transition-colors">
-                  <Icon className="w-8 h-8 text-secondary" />
+                {/* Floating Content */}
+                <div className="absolute inset-0 p-6 flex flex-col items-center justify-center bg-white transition-all duration-300">
+                  <div className="w-16 h-16 bg-slate-50 border border-slate-100 shadow-sm rounded-2xl flex items-center justify-center mb-5 group-hover:-translate-y-2 group-hover:shadow-md transition-all duration-300">
+                    <Icon className="w-8 h-8 text-slate-600 group-hover:text-primary transition-colors" />
+                  </div>
+                  <h4 className="font-bold text-slate-900 text-center group-hover:text-primary transition-colors">
+                    {industry.label}
+                  </h4>
                 </div>
-                <h3 className="font-semibold text-foreground">{industry.label}</h3>
               </motion.div>
             )
           })}

@@ -1,6 +1,7 @@
 'use client'
 
 import { motion } from 'framer-motion'
+import { MessageCircleQuestion, Mail, PhoneCall } from 'lucide-react'
 import {
   Accordion,
   AccordionContent,
@@ -63,60 +64,81 @@ export function FAQ() {
   ]
 
   return (
-    <section className="py-16 sm:py-24 bg-background/50">
-      <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="text-center mb-12"
-        >
-          <h2 className="text-3xl sm:text-4xl font-bold mb-4">Frequently Asked Questions</h2>
-          <p className="text-lg text-foreground/70">
-            Everything you need to know about Expert GeM Intelligence Platform
-          </p>
-        </motion.div>
+    <section className="py-24 sm:py-32 bg-background relative">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="grid lg:grid-cols-12 gap-16 lg:gap-8">
+          
+          {/* Left Sticky Header */}
+          <motion.div
+            initial={{ opacity: 0, x: -30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            className="lg:col-span-5"
+          >
+            <div className="lg:sticky lg:top-32 max-w-xl">
+              <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white border border-slate-200 shadow-sm mb-6">
+                <MessageCircleQuestion className="w-4 h-4 text-primary" />
+                <span className="text-sm font-bold tracking-wider text-slate-600 uppercase">Knowledge Base</span>
+              </div>
+              <h2 className="text-4xl sm:text-5xl font-extrabold text-slate-900 mb-6 tracking-tight leading-[1.1]">
+                Frequently Asked <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-blue-400">Questions</span>
+              </h2>
+              <p className="text-lg text-slate-600 leading-relaxed mb-10">
+                Everything you need to know about the Expert GeM Platform. Can&apos;t find the answer you&apos;re looking for?
+              </p>
 
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-        >
-          <Accordion type="single" collapsible className="w-full space-y-4">
-            {faqs.map((faq, index) => (
-              <AccordionItem
-                key={index}
-                value={`item-${index}`}
-                className="border border-border/50 rounded-lg px-6 data-[state=open]:border-secondary/50 data-[state=open]:bg-secondary/5 transition-colors"
-              >
-                <AccordionTrigger className="text-left font-semibold hover:text-secondary transition-colors">
-                  {faq.question}
-                </AccordionTrigger>
-                <AccordionContent className="text-foreground/70">
-                  {faq.answer}
-                </AccordionContent>
-              </AccordionItem>
-            ))}
-          </Accordion>
-        </motion.div>
+              {/* Support Contact Boxes */}
+              <div className="flex flex-col sm:flex-row gap-4">
+                <a href="mailto:expertgemconsulting@gmail.com" className="enterprise-card flex items-center gap-4 p-4 hover:-translate-y-1 transition-all group">
+                  <div className="w-10 h-10 rounded-full bg-slate-50 flex items-center justify-center border border-slate-100 group-hover:border-blue-100 transition-colors">
+                    <Mail className="w-4 h-4 text-slate-500 group-hover:text-primary transition-colors" />
+                  </div>
+                  <div>
+                    <div className="text-xs font-bold text-slate-500 uppercase tracking-wider mb-0.5">Email Support</div>
+                    <div className="text-sm font-semibold text-slate-900 group-hover:text-primary transition-colors">expertgemconsulting@gmail.com</div>
+                  </div>
+                </a>
+                <a href="/contact" className="enterprise-card flex items-center gap-4 p-4 hover:-translate-y-1 transition-all group">
+                  <div className="w-10 h-10 rounded-full bg-slate-50 flex items-center justify-center border border-slate-100 group-hover:border-blue-100 transition-colors">
+                    <PhoneCall className="w-4 h-4 text-slate-500 group-hover:text-primary transition-colors" />
+                  </div>
+                  <div>
+                    <div className="text-xs font-bold text-slate-500 uppercase tracking-wider mb-0.5">Contact Sales</div>
+                    <div className="text-sm font-semibold text-slate-900 group-hover:text-primary transition-colors">Book a Call</div>
+                  </div>
+                </a>
+              </div>
+            </div>
+          </motion.div>
 
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="text-center mt-12"
-        >
-          <p className="text-foreground/70 mb-4">Still have questions?</p>
-          <div className="flex gap-4 justify-center">
-            <a href="mailto:hello@expertgem.com" className="text-secondary hover:text-secondary/80 font-semibold">
-              Email us
-            </a>
-            <span className="text-foreground/30">•</span>
-            <a href="/contact" className="text-secondary hover:text-secondary/80 font-semibold">
-              Contact us
-            </a>
-          </div>
-        </motion.div>
+          {/* Right Accordion Content */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="lg:col-span-7"
+          >
+            <div className="enterprise-card p-2 sm:p-6 lg:p-8">
+              <Accordion type="single" collapsible className="w-full">
+                {faqs.map((faq, index) => (
+                  <AccordionItem
+                    key={index}
+                    value={`item-${index}`}
+                    className="border-b border-slate-100 last:border-0 px-4 group"
+                  >
+                    <AccordionTrigger className="text-left font-bold text-slate-900 group-hover:text-primary transition-colors py-6 text-base sm:text-lg hover:no-underline [&[data-state=open]]:text-primary">
+                      {faq.question}
+                    </AccordionTrigger>
+                    <AccordionContent className="text-slate-600 text-base leading-relaxed pb-6 pr-6">
+                      {faq.answer}
+                    </AccordionContent>
+                  </AccordionItem>
+                ))}
+              </Accordion>
+            </div>
+          </motion.div>
+          
+        </div>
       </div>
     </section>
   )

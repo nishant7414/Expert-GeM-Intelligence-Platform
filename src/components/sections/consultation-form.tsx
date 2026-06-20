@@ -1,27 +1,43 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { useState } from 'react'
+import { useForm } from 'react-hook-form'
+import { zodResolver } from '@hookform/resolvers/zod'
+import * as z from 'zod'
+import { toast } from 'react-hot-toast'
+
+
+
+const formSchema = z.object({
+  name: z.string().min(2, "Name is required"),
+  company: z.string().min(2, "Company is required"),
+  email: z.string().email("Invalid email address"),
+  phone: z.string().min(5, "Phone number is required"),
+  industry: z.string().min(1, "Industry is required"),
+  serviceNeeded: z.string().min(1, "Service is required"),
+  message: z.string().optional(),
+})
+type FormData = z.infer<typeof formSchema>
 
 export function ConsultationForm() {
-  const [formData, setFormData] = useState({
-    name: '',
-    company: '',
-    industry: '',
-    phone: '',
-    email: '',
-    serviceNeeded: '',
-    message: '',
+  const { register, handleSubmit, reset, formState: { errors, isSubmitting } } = useForm<FormData>({
+    resolver: zodResolver(formSchema),
   })
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value })
-  }
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault()
-    console.log('Consultation form submitted:', formData)
-    // Handle form submission here
+  const onSubmit = async (data: FormData) => {
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ ...data, formName: 'Book Consultation Form' }),
+      })
+      const result = await response.json()
+      if (!response.ok) throw new Error(result.error || 'Failed to submit')
+      toast.success('Thank you! Our team will contact you shortly.')
+      reset()
+    } catch (error: any) {
+      toast.error(error.message || 'Something went wrong. Please try again.')
+    }
   }
 
   const industries = [
@@ -72,7 +88,7 @@ export function ConsultationForm() {
 
           {/* Form */}
           <form
-            onSubmit={handleSubmit}
+            onSubmit={handleSubmit(onSubmit)}
             className="space-y-6 p-8 bg-card border border-border/50 rounded-lg"
           >
             <div className="grid md:grid-cols-2 gap-6">
@@ -83,13 +99,12 @@ export function ConsultationForm() {
                 <input
                   type="text"
                   id="name"
-                  name="name"
-                  value={formData.name}
-                  onChange={handleChange}
+                  {...register("name")}
                   required
                   className="w-full px-4 py-2 border border-border rounded-lg bg-background text-foreground focus:outline-none focus:border-secondary transition-colors"
                   placeholder="Your name"
                 />
+                {errors.name && <p className="text-red-500 text-xs mt-1">{errors.name.message}</p>}
               </div>
 
               <div>
@@ -99,13 +114,12 @@ export function ConsultationForm() {
                 <input
                   type="text"
                   id="company"
-                  name="company"
-                  value={formData.company}
-                  onChange={handleChange}
+                  {...register("company")}
                   required
                   className="w-full px-4 py-2 border border-border rounded-lg bg-background text-foreground focus:outline-none focus:border-secondary transition-colors"
                   placeholder="Your company"
                 />
+                {errors.company && <p className="text-red-500 text-xs mt-1">{errors.company.message}</p>}
               </div>
             </div>
 
@@ -116,9 +130,7 @@ export function ConsultationForm() {
                 </label>
                 <select
                   id="industry"
-                  name="industry"
-                  value={formData.industry}
-                  onChange={handleChange}
+                  {...register("industry")}
                   required
                   className="w-full px-4 py-2 border border-border rounded-lg bg-background text-foreground focus:outline-none focus:border-secondary transition-colors"
                 >
@@ -129,6 +141,7 @@ export function ConsultationForm() {
                     </option>
                   ))}
                 </select>
+                {errors.industry && <p className="text-red-500 text-xs mt-1">{errors.industry.message}</p>}
               </div>
 
               <div>
@@ -137,9 +150,7 @@ export function ConsultationForm() {
                 </label>
                 <select
                   id="serviceNeeded"
-                  name="serviceNeeded"
-                  value={formData.serviceNeeded}
-                  onChange={handleChange}
+                  {...register("serviceNeeded")}
                   required
                   className="w-full px-4 py-2 border border-border rounded-lg bg-background text-foreground focus:outline-none focus:border-secondary transition-colors"
                 >
@@ -150,6 +161,7 @@ export function ConsultationForm() {
                     </option>
                   ))}
                 </select>
+                {errors.serviceNeeded && <p className="text-red-500 text-xs mt-1">{errors.serviceNeeded.message}</p>}
               </div>
             </div>
 
@@ -161,13 +173,12 @@ export function ConsultationForm() {
                 <input
                   type="email"
                   id="email"
-                  name="email"
-                  value={formData.email}
-                  onChange={handleChange}
+                  {...register("email")}
                   required
                   className="w-full px-4 py-2 border border-border rounded-lg bg-background text-foreground focus:outline-none focus:border-secondary transition-colors"
                   placeholder="your@email.com"
                 />
+                {errors.email && <p className="text-red-500 text-xs mt-1">{errors.email.message}</p>}
               </div>
 
               <div>
@@ -177,13 +188,12 @@ export function ConsultationForm() {
                 <input
                   type="tel"
                   id="phone"
-                  name="phone"
-                  value={formData.phone}
-                  onChange={handleChange}
+                  {...register("phone")}
                   required
                   className="w-full px-4 py-2 border border-border rounded-lg bg-background text-foreground focus:outline-none focus:border-secondary transition-colors"
                   placeholder="+91 XXXX-XXXX-XX"
                 />
+                {errors.phone && <p className="text-red-500 text-xs mt-1">{errors.phone.message}</p>}
               </div>
             </div>
 
@@ -193,9 +203,7 @@ export function ConsultationForm() {
               </label>
               <textarea
                 id="message"
-                name="message"
-                value={formData.message}
-                onChange={handleChange}
+                {...register("message")}
                 rows={5}
                 className="w-full px-4 py-2 border border-border rounded-lg bg-background text-foreground focus:outline-none focus:border-secondary transition-colors resize-none"
                 placeholder="Share your procurement goals, current challenges, and what you're looking for..."
@@ -205,8 +213,8 @@ export function ConsultationForm() {
             <button
               type="submit"
               className="w-full px-6 py-3 bg-gradient-to-r from-secondary to-accent text-primary font-bold rounded-lg hover:opacity-90 transition-opacity"
-            >
-              Book Your Free Consultation
+             disabled={isSubmitting}>
+              {isSubmitting ? "Sending..." : "Book Your Free Consultation"}
             </button>
 
             <p className="text-sm text-center text-foreground/60">

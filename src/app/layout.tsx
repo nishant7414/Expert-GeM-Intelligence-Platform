@@ -3,6 +3,9 @@ import { Inter } from 'next/font/google'
 import './globals.css'
 import { Navbar } from '@/components/ui/navbar'
 import { Footer } from '@/components/ui/footer'
+import { Chatbot } from '@/components/ui/chatbot'
+import { FloatingWhatsApp } from '@/components/ui/whatsapp-button'
+import { Toaster } from 'react-hot-toast'
 
 const inter = Inter({
   subsets: ['latin'],
@@ -69,7 +72,7 @@ export const metadata: Metadata = {
 }
 
 export const viewport: Viewport = {
-  themeColor: '#0F172A',
+  themeColor: '#ffffff',
   width: 'device-width',
   initialScale: 1,
   maximumScale: 1,
@@ -89,12 +92,15 @@ export default function RootLayout({
         <link rel="manifest" href="/manifest.json" />
         <link rel="icon" href="/favicon.ico" />
       </head>
-      <body className={`${inter.variable} font-sans antialiased`}>
+      <body className={`${inter.variable} font-sans antialiased bg-white text-slate-900`} suppressHydrationWarning>
         <Navbar />
         <main>
           {children}
         </main>
         <Footer />
+        <Chatbot />
+        <FloatingWhatsApp />
+        <Toaster position="top-center" toastOptions={{ duration: 4000 }} />
       </body>
     </html>
   )

@@ -4,32 +4,38 @@
 
 @layer base {
   :root {
-    --background: 240 10% 3.9%;
-    --foreground: 0 0% 98%;
-    --card: 240 10% 3.9%;
-    --card-foreground: 0 0% 98%;
-    --popover: 240 10% 3.9%;
-    --popover-foreground: 0 0% 98%;
-    --primary: 240 8.7% 12.2%;
-    --primary-foreground: 0 0% 98%;
-    --secondary: 16 100% 50%;
-    --secondary-foreground: 0 0% 98%;
-    --muted: 217.2 16.3% 39.2%;
-    --muted-foreground: 215 16.3% 56.9%;
-    --accent: 38.6 92.1% 50.2%;
-    --accent-foreground: 0 0% 9%;
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 0 0% 98%;
-    --border: 217.2 16.3% 17.3%;
-    --input: 217.2 16.3% 17.3%;
-    --ring: 224.3 76.3% 48%;
-    --radius: 0.5rem;
+    --background: 210 40% 98%; /* #F8FAFC */
+    --secondary-background: 220 33% 98%; /* #F6F8FC approx */
+    --section-alt: 218 100% 97%; /* #EEF4FF */
+    --foreground: 222 47% 11%; /* #0F172A */
+    
+    --card: 0 0% 100%; /* #FFFFFF */
+    --card-foreground: 222 47% 11%; /* #0F172A */
+    
+    --popover: 0 0% 100%;
+    --popover-foreground: 222 47% 11%;
+    
+    --primary: 221 83% 53%; /* #2563EB */
+    --primary-foreground: 0 0% 100%; /* #FFFFFF */
+    
+    --secondary: 160 84% 39%; /* #10B981 */
+    --secondary-foreground: 0 0% 100%;
+    
+    --muted: 210 40% 98%; /* #F9FAFB */
+    --muted-foreground: 215 25% 47%; /* #64748B */
+    
+    --accent: 38 92% 50%; /* #F59E0B */
+    --accent-foreground: 0 0% 100%;
+    
+    --destructive: 348 83% 60%; /* #EF4444 */
+    --destructive-foreground: 0 0% 100%;
+    
+    --border: 214 32% 91%; /* #E2E8F0 */
+    --input: 214 32% 91%;
+    --ring: 221 83% 53%; /* #2563EB */
+    --radius: 1.25rem; /* 20px */
+    
     --font-inter: "Inter", system-ui, sans-serif;
-  }
-
-  .dark {
-    --background: 240 10% 3.9%;
-    --foreground: 0 0% 98%;
   }
 }
 
@@ -67,24 +73,33 @@
     animation-delay: 4s;
   }
 
-  .gradient-primary {
-    background: linear-gradient(135deg, #0F172A 0%, #10B981 100%);
+  /* Enterprise strict card styling */
+  .enterprise-card {
+    background: #FFFFFF;
+    border: 1px solid #E2E8F0;
+    border-radius: 20px;
+    box-shadow: 0 8px 30px rgba(15, 23, 42, 0.06);
+    transition: all 0.3s ease;
   }
 
-  .gradient-accent {
-    background: linear-gradient(135deg, #10B981 0%, #F59E0B 100%);
+  .enterprise-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 40px rgba(15, 23, 42, 0.08);
   }
 
   .glass-morphism {
-    background: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.2);
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(12px);
+    border: 1px solid theme('colors.border');
   }
 
-  .glass-morphism-dark {
-    background: rgba(15, 23, 42, 0.5);
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+  /* Enterprise Button Standardization */
+  .btn-primary {
+    @apply inline-flex items-center justify-center bg-primary text-white font-semibold rounded-xl px-6 py-3 transition-colors hover:bg-blue-700 shadow-sm;
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center justify-center bg-white text-primary border border-primary font-semibold rounded-xl px-6 py-3 transition-colors hover:bg-blue-50 shadow-sm;
   }
 }
 
@@ -95,7 +110,7 @@ html {
 
 /* Selection styling */
 ::selection {
-  @apply bg-secondary text-primary;
+  @apply bg-primary/20 text-primary;
 }
 
 ::-webkit-scrollbar {
@@ -103,13 +118,13 @@ html {
 }
 
 ::-webkit-scrollbar-track {
-  @apply bg-background;
+  @apply bg-slate-50;
 }
 
 ::-webkit-scrollbar-thumb {
-  @apply bg-secondary rounded-full;
+  @apply bg-slate-300 rounded-full border-2 border-slate-50;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  @apply bg-accent;
+  @apply bg-slate-400;
 }

@@ -1,123 +1,102 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { Calendar, TrendingUp, BookMarked, Lightbulb } from 'lucide-react'
+import { BookOpen, BarChart3, FileText, Video, ArrowRight } from 'lucide-react'
+import Link from 'next/link'
 
 export function ResourcesDetail() {
-  const categories = [
-    { title: 'GeM Tips & Tricks', icon: Lightbulb, count: 24 },
-    { title: 'Tender Strategy', icon: TrendingUp, count: 18 },
-    { title: 'Government Procurement', icon: BookMarked, count: 32 },
-    { title: 'Compliance & Documentation', icon: Calendar, count: 15 },
-  ]
-
-  const articles = [
-    {
-      category: 'GeM Tips & Tricks',
-      title: '10 Ways to Optimize Your GeM Seller Profile for Better Visibility',
-      date: 'June 15, 2024',
-      readTime: '8 min read',
-      excerpt: 'Learn the proven strategies to improve your GeM profile ranking and get more tender opportunities.',
+  const hubs = [
+    { 
+      title: 'Expert Blog & Insights', 
+      description: 'Deep-dive articles on procurement strategy, AI, vendor assessments, and GeM updates.',
+      icon: BookOpen, 
+      count: '150+ Articles',
+      link: '/resources/blog',
+      color: 'blue'
     },
-    {
-      category: 'Tender Strategy',
-      title: 'Winning Bid Strategy: How to Price Your Government Tenders',
-      date: 'June 12, 2024',
-      readTime: '12 min read',
-      excerpt: 'Master the art of pricing government tenders competitively while maintaining healthy margins.',
+    { 
+      title: 'Success Case Studies', 
+      description: 'Discover how top enterprises and MSMEs use our platform to win massive government contracts.',
+      icon: BarChart3, 
+      count: '45+ Stories',
+      link: '/resources/case-studies',
+      color: 'emerald'
     },
-    {
-      category: 'Government Procurement',
-      title: 'Complete Guide to OEM Authorization in Government Procurement',
-      date: 'June 10, 2024',
-      readTime: '15 min read',
-      excerpt: 'Understand the OEM authorization process and get approved for restricted categories.',
+    { 
+      title: 'Guides & Playbooks', 
+      description: 'Downloadable templates, checklists, and step-by-step roadmaps for procurement success.',
+      icon: FileText, 
+      count: '80+ Resources',
+      link: '/resources/guides',
+      color: 'purple'
     },
-    {
-      category: 'Compliance & Documentation',
-      title: 'Essential Documents Checklist for Government Vendor Registration',
-      date: 'June 8, 2024',
-      readTime: '10 min read',
-      excerpt: 'Complete checklist of all documents needed for smooth government vendor registration.',
-    },
-    {
-      category: 'Tender Strategy',
-      title: 'How to Identify Your Most Profitable Government Contract Opportunities',
-      date: 'June 5, 2024',
-      readTime: '9 min read',
-      excerpt: 'Data-driven approach to selecting and prioritizing the best tender opportunities.',
-    },
-    {
-      category: 'GeM Tips & Tricks',
-      title: 'GeM Vendor Assessment: Everything You Need to Know',
-      date: 'June 1, 2024',
-      readTime: '11 min read',
-      excerpt: 'Comprehensive guide to understanding and improving your vendor assessment score.',
+    { 
+      title: 'Webinars & Masterclasses', 
+      description: 'Join live training sessions or watch past masterclasses from our top procurement strategists.',
+      icon: Video, 
+      count: '50+ Sessions',
+      link: '/resources/webinars',
+      color: 'amber'
     },
   ]
 
   return (
-    <section className="py-16 sm:py-24">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
-        {/* Categories */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          className="grid md:grid-cols-2 lg:grid-cols-4 gap-6"
-        >
-          {categories.map((category, index) => {
-            const Icon = category.icon
+    <section className="py-16 sm:py-24 bg-slate-50 min-h-screen">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <div className="text-center max-w-3xl mx-auto mb-16">
+          <h2 className="text-3xl sm:text-5xl font-extrabold text-slate-900 mb-6">Explore the Knowledge Ecosystem</h2>
+          <p className="text-lg text-slate-600">Choose a hub below to access enterprise-grade procurement intelligence, tools, and training materials.</p>
+        </div>
+
+        <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+          {hubs.map((hub, index) => {
+            const Icon = hub.icon
+            const colorStyles = 
+              hub.color === 'blue' ? 'bg-blue-50 text-blue-600 group-hover:bg-blue-600 group-hover:text-slate-900 border-blue-100' :
+              hub.color === 'emerald' ? 'bg-emerald-50 text-emerald-600 group-hover:bg-emerald-600 group-hover:text-slate-900 border-emerald-100' :
+              hub.color === 'purple' ? 'bg-purple-50 text-purple-600 group-hover:bg-purple-600 group-hover:text-slate-900 border-purple-100' :
+              'bg-amber-50 text-amber-600 group-hover:bg-amber-600 group-hover:text-slate-900 border-amber-100'
+
             return (
-              <motion.div
-                key={index}
-                whileHover={{ y: -5 }}
-                className="p-6 bg-card border border-border/50 rounded-lg hover:border-secondary/50 transition-all cursor-pointer"
-              >
-                <div className="w-12 h-12 bg-secondary/10 rounded-lg flex items-center justify-center mb-4">
-                  <Icon className="w-6 h-6 text-secondary" />
-                </div>
-                <h3 className="font-semibold mb-2">{category.title}</h3>
-                <p className="text-2xl font-bold text-secondary">{category.count}</p>
-                <p className="text-sm text-foreground/60">Articles</p>
-              </motion.div>
+              <Link href={hub.link} key={index}>
+                <motion.div
+                  whileHover={{ y: -5 }}
+                  className="p-8 bg-white border border-slate-200 rounded-3xl hover:shadow-2xl hover:shadow-slate-200/50 transition-all cursor-pointer group flex flex-col h-full"
+                >
+                  <div className={`w-16 h-16 rounded-2xl flex items-center justify-center mb-6 transition-colors border ${colorStyles}`}>
+                    <Icon className="w-8 h-8" />
+                  </div>
+                  <h3 className="text-2xl font-bold text-slate-900 mb-3 group-hover:text-primary transition-colors">{hub.title}</h3>
+                  <p className="text-slate-600 leading-relaxed mb-8 flex-1">{hub.description}</p>
+                  <div className="flex items-center justify-between pt-6 border-t border-slate-100">
+                    <span className="font-bold text-slate-900">{hub.count}</span>
+                    <span className="flex items-center gap-2 text-primary font-bold">
+                      Explore <ArrowRight className="w-4 h-4" />
+                    </span>
+                  </div>
+                </motion.div>
+              </Link>
             )
           })}
-        </motion.div>
-
-        {/* Featured Articles */}
-        <div>
-          <h3 className="text-2xl font-bold mb-8">Latest Articles</h3>
-          <motion.div
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            className="grid gap-6"
-          >
-            {articles.map((article, index) => (
-              <motion.div
-                key={index}
-                whileHover={{ x: 5 }}
-                className="p-6 bg-card border border-border/50 rounded-lg hover:border-secondary/50 transition-all cursor-pointer group"
-              >
-                <div className="flex items-start justify-between mb-3">
-                  <span className="text-xs font-semibold text-secondary bg-secondary/10 px-3 py-1 rounded-full">
-                    {article.category}
-                  </span>
-                  <span className="text-xs text-foreground/60">{article.date}</span>
-                </div>
-                <h3 className="text-lg font-bold mb-2 group-hover:text-secondary transition-colors">
-                  {article.title}
-                </h3>
-                <p className="text-foreground/70 mb-3">{article.excerpt}</p>
-                <div className="flex items-center gap-4">
-                  <span className="text-sm text-foreground/60">{article.readTime}</span>
-                  <span className="text-secondary group-hover:translate-x-1 transition-transform">→</span>
-                </div>
-              </motion.div>
-            ))}
-          </motion.div>
         </div>
+
+        {/* Newsletter / CTA */}
+        <div className="mt-24 max-w-5xl mx-auto bg-slate-900 text-slate-900 rounded-3xl p-12 text-center relative overflow-hidden">
+          <div className="absolute inset-0 bg-[url('/noise.png')] opacity-10 mix-blend-overlay pointer-events-none"></div>
+          <div className="absolute top-0 right-1/4 w-64 h-64 bg-primary/30 rounded-full blur-[80px] pointer-events-none"></div>
+          
+          <h2 className="text-3xl font-bold mb-4 relative z-10">Stay Ahead in Government Procurement</h2>
+          <p className="text-slate-700 text-lg mb-8 max-w-2xl mx-auto relative z-10">Subscribe to our weekly intelligence report and get the latest GeM updates, tender strategies, and compliance alerts directly in your inbox.</p>
+          
+          <div className="flex flex-col sm:flex-row gap-4 justify-center max-w-lg mx-auto relative z-10">
+            <input type="email" placeholder="Enter your work email" className="px-6 py-4 rounded-xl bg-slate-100 border border-slate-300 text-slate-900 placeholder:text-slate-900/50 flex-1 outline-none focus:bg-slate-200 transition-colors" />
+            <button className="px-8 py-4 bg-primary text-primary-foreground font-bold rounded-xl shadow-lg shadow-primary/25 hover:bg-primary/90 transition-all">
+              Subscribe Free
+            </button>
+          </div>
+        </div>
+
       </div>
     </section>
   )

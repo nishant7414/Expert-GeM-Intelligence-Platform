@@ -10,7 +10,7 @@ export function PricingPreview() {
       name: 'Starter',
       price: '₹5,999',
       period: '/month',
-      description: 'Perfect for small businesses',
+      description: 'Perfect for small businesses starting out.',
       features: [
         'Tender Discovery (50/month)',
         'Basic Analytics',
@@ -24,7 +24,7 @@ export function PricingPreview() {
       name: 'Growth',
       price: '₹15,999',
       period: '/month',
-      description: 'For growing companies',
+      description: 'For growing companies scaling procurement.',
       features: [
         'Tender Discovery (Unlimited)',
         'AI Tender Analysis',
@@ -39,7 +39,7 @@ export function PricingPreview() {
       name: 'Enterprise',
       price: 'Custom',
       period: 'pricing',
-      description: 'For large organizations',
+      description: 'Custom solutions for large organizations.',
       features: [
         'Everything in Growth +',
         'Dedicated Account Manager',
@@ -53,17 +53,18 @@ export function PricingPreview() {
   ]
 
   return (
-    <section className="py-16 sm:py-24">
+    <section className="py-20 sm:py-32 bg-[#F6F8FC]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-center mb-12"
+          className="text-center mb-16"
         >
-          <h2 className="text-3xl sm:text-4xl font-bold mb-4">Pricing Plans</h2>
-          <p className="text-lg text-foreground/70 max-w-2xl mx-auto">
-            Flexible plans designed for businesses of all sizes
+          <h2 className="text-sm font-bold tracking-wider text-primary uppercase mb-3">Pricing</h2>
+          <h3 className="text-3xl sm:text-4xl font-extrabold text-slate-900 mb-4">Transparent Pricing Plans</h3>
+          <p className="text-lg text-slate-600 max-w-2xl mx-auto">
+            Flexible plans designed to scale with your government procurement needs.
           </p>
         </motion.div>
 
@@ -71,50 +72,56 @@ export function PricingPreview() {
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
-          className="grid md:grid-cols-3 gap-6 lg:gap-8"
+          className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto"
         >
           {plans.map((plan, index) => (
             <motion.div
               key={index}
               whileHover={{ y: -5 }}
-              className={`relative p-8 rounded-lg border transition-all ${
+              className={`relative p-8 rounded-[24px] border transition-all flex flex-col bg-white ${
                 plan.featured
-                  ? 'bg-gradient-to-br from-secondary/10 to-accent/10 border-secondary/50 ring-2 ring-secondary/20'
-                  : 'bg-card border-border/50 hover:border-secondary/30'
+                  ? 'border-primary shadow-xl ring-1 ring-primary/20'
+                  : 'border-slate-200 shadow-sm hover:shadow-md hover:border-slate-300'
               }`}
             >
               {plan.featured && (
-                <div className="absolute -top-4 left-1/2 -translate-x-1/2 px-4 py-1 bg-secondary text-primary text-xs font-semibold rounded-full">
-                  Most Popular
+                <div className="absolute -top-4 left-1/2 -translate-x-1/2 px-4 py-1.5 bg-primary text-white text-xs font-bold rounded-full shadow-md tracking-wide">
+                  MOST POPULAR
                 </div>
               )}
 
-              <h3 className="text-2xl font-bold mb-2">{plan.name}</h3>
-              <p className="text-sm text-foreground/60 mb-6">{plan.description}</p>
+              <h4 className="text-2xl font-bold text-slate-900 mb-2">{plan.name}</h4>
+              <p className="text-sm text-slate-600 mb-8 h-10">{plan.description}</p>
 
-              <div className="mb-6">
-                <span className="text-4xl font-bold text-secondary">{plan.price}</span>
-                <span className="text-foreground/60 text-sm">/{plan.period}</span>
+              <div className="mb-8">
+                {plan.price === 'Custom' ? (
+                  <span className="text-4xl font-extrabold text-slate-900">Custom</span>
+                ) : (
+                  <>
+                    <span className="text-4xl font-extrabold text-slate-900">{plan.price}</span>
+                    <span className="text-slate-500 font-medium ml-1">{plan.period}</span>
+                  </>
+                )}
+              </div>
+
+              <div className="space-y-4 mb-8 flex-grow">
+                {plan.features.map((feature, i) => (
+                  <div key={i} className="flex items-start gap-3">
+                    <Check className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
+                    <span className="text-slate-700 font-medium text-sm">{feature}</span>
+                  </div>
+                ))}
               </div>
 
               <button
-                className={`w-full py-2 px-4 rounded-lg font-semibold mb-8 transition-colors ${
+                className={`w-full py-3 px-4 rounded-xl font-bold transition-all mt-auto border flex items-center justify-center ${
                   plan.featured
-                    ? 'bg-secondary text-primary hover:bg-secondary/90'
-                    : 'border border-secondary text-secondary hover:bg-secondary/10'
+                    ? 'btn-primary'
+                    : 'btn-secondary'
                 }`}
               >
                 {plan.cta}
               </button>
-
-              <div className="space-y-3">
-                {plan.features.map((feature, i) => (
-                  <div key={i} className="flex items-start gap-3">
-                    <Check className="w-5 h-5 text-secondary flex-shrink-0 mt-0.5" />
-                    <span className="text-foreground/80 text-sm">{feature}</span>
-                  </div>
-                ))}
-              </div>
             </motion.div>
           ))}
         </motion.div>
@@ -123,16 +130,16 @@ export function PricingPreview() {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-center mt-12"
+          className="text-center mt-16"
         >
-          <p className="text-foreground/70 mb-4">
-            Not sure which plan is right for you?
+          <p className="text-slate-600 font-medium mb-4">
+            Need a custom solution for your specific requirements?
           </p>
           <Link
             href="/contact"
-            className="inline-block px-6 py-2 text-secondary border border-secondary rounded-lg hover:bg-secondary/10 transition-colors"
+            className="btn-secondary"
           >
-            Schedule a Demo
+            Contact our Enterprise Team
           </Link>
         </motion.div>
       </div>
