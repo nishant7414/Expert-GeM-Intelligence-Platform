@@ -113,7 +113,7 @@ export function AboutDetail() {
             className="grid md:grid-cols-2 lg:grid-cols-3 gap-6"
           >
             {[
-              { name: 'Shubham Singh', role: 'Founder & CEO', bio: '15+ years in government procurement' },
+              { name: 'Shubham Singh', role: 'Founder & CEO', bio: '5+ years in government procurement' },
               { name: 'Nishant Kumar', role: 'Chief Technology Officer', bio: 'AI and data platform expert' },
               { name: 'Piyush Dharia', role: 'VP, Consulting Services', bio: 'Procurement strategy specialist' },
             ].map((leader, index) => (

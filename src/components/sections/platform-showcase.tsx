@@ -61,7 +61,7 @@ export function PlatformShowcase() {
           <h3 className="text-3xl sm:text-5xl font-extrabold text-slate-900 mb-6 tracking-tight">
             Enterprise-Grade Intelligence
           </h3>
-          <p className="text-lg text-slate-600 max-w-2xl mx-auto">
+          <p className="text-xl text-slate-600 max-w-2xl mx-auto">
             Experience the most powerful suite of procurement tools designed to give you an unfair advantage in government contracting.
           </p>
         </motion.div>

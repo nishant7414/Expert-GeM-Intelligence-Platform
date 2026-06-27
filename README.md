@@ -1,255 +1,105 @@
 # Expert GeM Intelligence Platform
 
-Modern Government Procurement Intelligence Platform built with Next.js, TypeScript, Tailwind CSS, Shadcn UI, and Framer Motion.
+[![Next.js](https://img.shields.io/badge/Next.js-15.0-black?style=for-the-badge&logo=next.js&logoColor=white)](https://nextjs.org/)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5.3-blue?style=for-the-badge&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
+[![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-3.4-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)](https://tailwindcss.com/)
+[![License: Proprietary](https://img.shields.io/badge/License-Proprietary-red.svg?style=for-the-badge)](#license)
 
-## Overview
+A modern, enterprise-grade SaaS platform designed to provide actionable intelligence, analytics, and consulting services for the Government e-Marketplace (GeM) in India. Built with Next.js 15 App Router, Tailwind CSS, and Framer Motion.
 
-Expert GeM Intelligence Platform is a comprehensive SaaS solution that helps businesses discover, analyze, and win government contracts on GeM (Government e-Marketplace). The platform combines AI-powered procurement intelligence with expert consulting services.
+## 🚀 Key Features
 
-## Features
+- **Bidding Intelligence:** Analytics dashboard for tracking active tenders and opportunities.
+- **Tender Match Scoring:** Automated matching of procurement requirements with vendor capabilities.
+- **Compliance Tracking:** Document management and compliance readiness assessment.
+- **Interactive Dashboards:** Real-time data visualization with fluid animations.
+- **Generative AI Integration:** Powered by Google's Generative AI for smart insights.
 
-- **Tender Discovery**: AI-powered recommendations matching your business profile
-- **Tender Analysis**: Automated eligibility assessment and risk evaluation
-- **Compliance Center**: Document tracking and vendor readiness management
-- **Procurement Analytics**: Data-driven insights and performance tracking
-- **Expert Consulting**: Dedicated support for GeM registration and tender participation
-- **Multi-industry Support**: Tailored solutions for 8+ industries
-- **Mobile Responsive**: Fully optimized for desktop, tablet, and mobile
+## 🏗️ Technology Stack
 
-## Technology Stack
+- **Framework:** [Next.js 15](https://nextjs.org/) (App Router)
+- **Language:** [TypeScript](https://www.typescriptlang.org/) (Strict Mode)
+- **Styling:** [Tailwind CSS](https://tailwindcss.com/)
+- **UI Components:** [Radix UI](https://www.radix-ui.com/) primitives
+- **Animations:** [Framer Motion](https://www.framer.com/motion/)
+- **Forms & Validation:** [React Hook Form](https://react-hook-form.com/) + [Zod](https://zod.dev/)
+- **Email Service:** [Resend](https://resend.com/)
+- **Icons:** [Lucide React](https://lucide.dev/)
 
-- **Framework**: Next.js 15 (App Router)
-- **Language**: TypeScript
-- **Styling**: Tailwind CSS
-- **UI Components**: Shadcn UI
-- **Animations**: Framer Motion
-- **Icons**: Lucide React
-- **Package Manager**: npm
+## ⚙️ Prerequisites
 
-## Getting Started
+Before you begin, ensure you have the following installed:
+- [Node.js](https://nodejs.org/) 18.17 or later
+- [npm](https://www.npmjs.com/) (comes with Node.js) or [yarn](https://yarnpkg.com/) / [pnpm](https://pnpm.io/)
+- A `.env.local` file configured with required API keys.
 
-### Prerequisites
+## 🛠️ Installation & Setup
 
-- Node.js 18+ installed
-- npm or yarn package manager
+1. **Clone the repository:**
+   ```bash
+   git clone https://github.com/your-org/expert-gem-intelligence.git
+   cd expert-gem-intelligence
+   ```
 
-### Installation
+2. **Install dependencies:**
+   ```bash
+   npm install
+   # or yarn install / pnpm install
+   ```
 
-```bash
-# Clone the repository
-git clone https://github.com/yourusername/expert-gem-intelligence-platform.git
+3. **Configure Environment Variables:**
+   Copy the example environment file and populate it with your credentials:
+   ```bash
+   cp .env.example .env.local
+   ```
+   *Required variables typically include API keys for Google Generative AI and Resend.*
 
-# Navigate to project directory
-cd expert-gem-intelligence-platform
+4. **Start the development server:**
+   ```bash
+   npm run dev
+   ```
 
-# Install dependencies
-npm install
+5. **Open the application:**
+   Navigate to [http://localhost:3000](http://localhost:3000) in your web browser.
 
-# Create environment file
-cp .env.example .env.local
+## 📁 Project Structure
 
-# Start development server
-npm run dev
-```
-
-Open [http://localhost:3000](http://localhost:3000) in your browser to see the application.
-
-## Project Structure
-
-```
+```text
 expert-gem-intelligence-platform/
+├── public/                 # Static assets (images, fonts, etc.)
 ├── src/
-│   ├── app/
-│   │   ├── layout.tsx           # Root layout
-│   │   ├── page.tsx             # Home page
-│   │   ├── globals.css          # Global styles
-│   │   ├── platform/
-│   │   ├── services/
-│   │   ├── industries/
-│   │   ├── pricing/
-│   │   ├── resources/
-│   │   ├── about/
-│   │   ├── contact/
-│   │   └── book-consultation/
-│   ├── components/
-│   │   ├── ui/                  # Reusable UI components
-│   │   │   ├── navbar.tsx
-│   │   │   ├── footer.tsx
-│   │   │   └── accordion.tsx
-│   │   └── sections/            # Page sections
-│   │       ├── hero.tsx
-│   │       ├── trust.tsx
-│   │       ├── problems.tsx
-│   │       ├── solutions.tsx
-│   │       ├── platform-showcase.tsx
-│   │       ├── how-it-works.tsx
-│   │       ├── industries.tsx
-│   │       ├── success-metrics.tsx
-│   │       ├── testimonials.tsx
-│   │       ├── pricing-preview.tsx
-│   │       ├── faq.tsx
-│   │       └── [other sections]
-│   ├── lib/
-│   │   └── utils.ts             # Utility functions
-│   └── config/
-├── public/
-│   ├── robots.txt
-│   └── manifest.json
-├── package.json
-├── tsconfig.json
-├── tailwind.config.ts
-├── next.config.js
-├── postcss.config.js
-├── .eslintrc.json
-├── .prettierrc
-└── README.md
+│   ├── app/                # Next.js App Router (pages, layouts, api routes)
+│   ├── components/         # Reusable React components
+│   │   ├── ui/             # Generic, reusable UI elements (Buttons, Inputs)
+│   │   └── sections/       # Distinct page sections (Hero, Features, Pricing)
+│   ├── lib/                # Utility functions and shared helpers
+│   └── config/             # Application configuration files
+├── next.config.js          # Next.js configuration
+├── tailwind.config.ts      # Tailwind CSS configuration
+└── tsconfig.json           # TypeScript configuration
 ```
 
-## Pages
+## 🧪 Code Quality & Scripts
 
-- **Home** (`/`) - Main landing page with hero, features, testimonials, and CTA
-- **Platform** (`/platform`) - Detailed platform features and capabilities
-- **Services** (`/services`) - Comprehensive service offerings
-- **Industries** (`/industries`) - Industry-specific solutions
-- **Pricing** (`/pricing`) - Pricing plans and comparison
-- **Resources** (`/resources`) - Blog articles and guides
-- **About** (`/about`) - Company information and team
-- **Contact** (`/contact`) - Contact form and information
-- **Book Consultation** (`/book-consultation`) - Lead generation form
+This project maintains strict linting and type checking rules to ensure enterprise-grade code quality.
 
-## Design System
+- **`npm run dev`**: Starts the development server with Hot Module Replacement.
+- **`npm run build`**: Creates an optimized production build.
+- **`npm run start`**: Starts the Node.js server using the production build.
+- **`npm run lint`**: Runs ESLint to catch syntax and style issues.
+- **`npm run type-check`**: Validates TypeScript typings across the project without emitting compiled files.
 
-### Colors
+## 🤝 Contributing
 
-- **Primary**: `#0F172A` (Deep Navy)
-- **Secondary**: `#10B981` (Emerald Green)
-- **Accent**: `#F59E0B` (Amber)
-- **Background**: `#F8FAFC` (Light Slate)
+We welcome internal contributions to improve the Expert GeM platform. Please follow these steps:
 
-### Typography
+1. Create a feature branch (`git checkout -b feature/amazing-feature`)
+2. Commit your changes (`git commit -m 'feat: Add amazing feature'`)
+3. Ensure type checks and linting pass (`npm run type-check && npm run lint`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
 
-- **Font Family**: Inter
-- **Base Size**: 16px
-- **Line Height**: 1.5
+## 📄 License
 
-### Responsive Breakpoints
-
-- Mobile: < 640px
-- Tablet: 640px - 1024px
-- Desktop: > 1024px
-
-## Available Scripts
-
-```bash
-# Start development server
-npm run dev
-
-# Build for production
-npm run build
-
-# Start production server
-npm start
-
-# Run ESLint
-npm run lint
-
-# Type check
-npm run type-check
-```
-
-## Performance Optimizations
-
-- Server-side rendering with Next.js
-- Image optimization
-- Code splitting
-- CSS minification
-- Font optimization
-- Lazy loading
-
-## SEO
-
-The website includes:
-
-- Meta tags for all pages
-- Open Graph tags for social sharing
-- Schema structured data
-- XML sitemap
-- Robots.txt
-- Semantic HTML structure
-- Mobile-friendly design
-
-## Accessibility
-
-- WCAG 2.1 Level AA compliant
-- Semantic HTML
-- ARIA labels
-- Keyboard navigation
-- Color contrast compliance
-- Focus management
-
-## Browser Support
-
-- Chrome (latest)
-- Firefox (latest)
-- Safari (latest)
-- Edge (latest)
-
-## Deployment
-
-### Vercel (Recommended)
-
-1. Push code to GitHub
-2. Import project in Vercel
-3. Set environment variables
-4. Deploy
-
-### Docker
-
-```bash
-docker build -t expert-gem .
-docker run -p 3000:3000 expert-gem
-```
-
-### Traditional Hosting
-
-```bash
-npm run build
-npm start
-```
-
-## Environment Variables
-
-Create a `.env.local` file:
-
-```env
-NEXT_PUBLIC_SITE_URL=http://localhost:3000
-NEXT_PUBLIC_API_URL=http://localhost:3000/api
-```
-
-## Contributing
-
-Contributions are welcome! Please follow these steps:
-
-1. Create a feature branch
-2. Make your changes
-3. Submit a pull request
-
-## License
-
-MIT License - see LICENSE file for details
-
-## Support
-
-For questions or support:
-
-- Email: hello@expertgem.com
-- Phone: +91 XXXX-XXXX-XX
-- Website: https://expertgem.com
-
-## Credits
-
-Built with love by Expert GeM Consultancy Team
-
----
-
-**Note**: This is a modern SaaS website designed to compete with leading B2B technology companies while serving the government procurement industry in India.
+**Proprietary** – All rights reserved. 
+This project and its source code are the proprietary intellectual property of the organization. Unauthorized copying, modification, or distribution is strictly prohibited.
